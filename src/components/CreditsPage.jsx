@@ -32,7 +32,7 @@ export function CreditsPage({ isOpen, onClose }) {
         <h1 className="credits-page__name">Alvino by LdxVin</h1>
         <p className="credits-page__desc">
           Hidup Ini Ibarat Catur, Jika Kamu Tidak Pandai Bermain, 
-          Maka Kamu Akan Di Permainan
+          Maka Kamu Akan Di Permaikan
         </p>
       </div>
     </div>
