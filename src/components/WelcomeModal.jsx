@@ -25,10 +25,11 @@ export function WelcomeModal() {
         </div>
 
         <h1 id="welcome-modal-title" className="welcome-modal__title">
-          Selamat datang di LdxVin
+          Selamat datang di LdxVin Music
         </h1>
         <p className="welcome-modal__desc">
-          Isi sendiri! file /src/components/WelcomeModal.jsx line 43
+          Putar Musiknya, Rasakan Vibemu, 
+          Dan Nikmati Setiap Momennya Bersama LdxVin Music 🎶
         </p>
 
         <button className="welcome-modal__cta" onClick={close}>
