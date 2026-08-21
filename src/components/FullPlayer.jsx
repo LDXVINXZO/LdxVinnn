@@ -40,11 +40,48 @@ export function FullPlayer() {
 
   const trackBarRef = useRef(null);
   const [isPlaylistSheetOpen, setIsPlaylistSheetOpen] = useState(false);
+  const [lyrics, setLyrics] = useState("");
+  const [lyricsState, setLyricsState] = useState("idle"); // idle | loading | ready | empty | error
 
   useEffect(() => {
     document.body.classList.toggle("scroll-locked", isExpanded);
     return () => document.body.classList.remove("scroll-locked");
   }, [isExpanded]);
+
+  useEffect(() => {
+    if (!track) {
+      setLyrics("");
+      setLyricsState("idle");
+      return;
+    }
+
+    let cancelled = false;
+    const { artist, song } = splitTitleArtist(track);
+    setLyricsState("loading");
+    setLyrics("");
+
+    const params = new URLSearchParams({ track: song });
+    if (artist && artist !== "Tidak diketahui") params.set("artist", artist);
+
+    fetch(`/api/lyrics?${params.toString()}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (cancelled) return;
+        if (data.status && data.lyrics) {
+          setLyrics(data.lyrics);
+          setLyricsState("ready");
+        } else {
+          setLyricsState("empty");
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLyricsState("error");
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [track?.videoId]);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -144,6 +181,18 @@ export function FullPlayer() {
           <button className="full-player__skip" onClick={playNext} aria-label="Lagu berikutnya">
             <SkipGlyph />
           </button>
+        </div>
+
+        <div className="full-player__lyrics">
+          <h2 className="full-player__lyrics-title">Lirik</h2>
+          {lyricsState === "loading" && <p className="full-player__lyrics-hint">Memuat lirik…</p>}
+          {lyricsState === "empty" && (
+            <p className="full-player__lyrics-hint">Lirik tidak ditemukan untuk lagu ini.</p>
+          )}
+          {lyricsState === "error" && (
+            <p className="full-player__lyrics-hint">Gagal memuat lirik. Coba lagi nanti.</p>
+          )}
+          {lyricsState === "ready" && <p className="full-player__lyrics-text">{lyrics}</p>}
         </div>
       </div>
 
