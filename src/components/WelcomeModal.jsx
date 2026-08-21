@@ -28,7 +28,7 @@ export function WelcomeModal() {
           Selamat datang di LdxVin
         </h1>
         <p className="welcome-modal__desc">
-          Isi sendiri! file /arc/components/WelcomeModal.jsx line 43
+          Isi sendiri! file /src/components/WelcomeModal.jsx line 43
         </p>
 
         <button className="welcome-modal__cta" onClick={close}>
