@@ -31,7 +31,8 @@ export function CreditsPage({ isOpen, onClose }) {
         </div>
         <h1 className="credits-page__name">Alvino by LdxVin</h1>
         <p className="credits-page__desc">
-          Isi sendiri. File /src/components/CreditsPage.jsx line 34
+          Hidup Ini Ibarat Catur, Jika Kamu Tidak Pandai Bermain, 
+          Maka Kamu Akan Di Permainan
         </p>
       </div>
     </div>
