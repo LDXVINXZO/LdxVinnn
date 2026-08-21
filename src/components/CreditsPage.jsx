@@ -29,7 +29,7 @@ export function CreditsPage({ isOpen, onClose }) {
             />
           )}
         </div>
-        <h1 className="credits-page__name">Nama Pembuat</h1>
+        <h1 className="credits-page__name">Alvino by LdxVin</h1>
         <p className="credits-page__desc">
           Isi sendiri. File /src/components/CreditsPage.jsx line 34
         </p>
