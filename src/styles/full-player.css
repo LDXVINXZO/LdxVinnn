@@ -29,6 +29,7 @@
   transform: translateY(100%);
   transition: transform 0.45s var(--ease);
   box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
 .full-player--open {
@@ -92,11 +93,11 @@
 }
 
 .full-player__stage {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
+  min-height: 220px;
   padding: 12px 0;
 }
 
@@ -271,6 +272,36 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.full-player__lyrics {
+  flex: 0 0 auto;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+}
+
+.full-player__lyrics-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 19px;
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.full-player__lyrics-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+}
+
+.full-player__lyrics-hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-faint);
 }
 
 @media (max-width: 420px) {
