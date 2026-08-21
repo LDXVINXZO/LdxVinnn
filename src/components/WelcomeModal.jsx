@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/welcome-modal.css";
 
-const STORAGE_KEY = "vinylo:welcome-seen";
-
 export function WelcomeModal() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    try {
-      const seen = localStorage.getItem(STORAGE_KEY);
-      if (!seen) setIsOpen(true);
-    } catch {
-      setIsOpen(true);
-    }
-  }, []);
+  // Selalu tampil tiap kali komponen ini mount (tiap kunjungan/refresh),
+  // tidak lagi disimpan ke localStorage.
+  const [isOpen, setIsOpen] = useState(true);
 
   const close = () => {
     setIsOpen(false);
-    try {
-      localStorage.setItem(STORAGE_KEY, "1");
-    } catch {
-    }
   };
 
   if (!isOpen) return null;
