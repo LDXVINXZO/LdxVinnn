@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/credits-page.css";
 
-const PHOTO_SRC = "https://cdn.jsdelivr.net/gh/LDXVINXZO/dtbs_jpg/nesya3.jpg";
+const PHOTO_SRC = "https://cdn.jsdelivr.net/gh/LDXVINXZO/dtbs_jpg/LdxVin123.jpg";
 
 export function CreditsPage({ isOpen, onClose }) {
   const [photoFailed, setPhotoFailed] = useState(false);
